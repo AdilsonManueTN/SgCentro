@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+                            EntrarController
+                    
+                    
+                    };
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+    Route::get('/entrar', function () {
+      return view('auth.entrar');
+    })->name('entrar');
+
+
+
+
+    Route::name('admin.')->group(function () {
+        Route::get('/pagina-principal', [EntrarController::class,'index'])->name('index');
+
+
+
+
+    });
+
+Route::get('/as', function () {
     return view('welcome');
 });
