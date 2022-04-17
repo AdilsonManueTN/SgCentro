@@ -19,9 +19,9 @@ class CreateSalariosTable extends Migration
             $table->decimal('salario_bruto',$precision = 8, $scale = 2);
             $table->decimal('salario_liquido',$precision = 8, $scale = 2);
             $table->decimal('salario_base',$precision = 8, $scale = 2);
-            $table->int('percentagem');
+            $table->integer('percentagem');
             $table->decimal('total');
-            $table->foreign('categoria_id')->references('categorias')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

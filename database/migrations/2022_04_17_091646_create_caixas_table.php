@@ -16,7 +16,7 @@ class CreateCaixasTable extends Migration
         Schema::create('caixas', function (Blueprint $table) {
             $table->id();
             $table->decimal('valor_actual',$precision = 8, $scale = 2);
-            $table->int('valor_base');
+            $table->integer('valor_base');
             $table->decimal('total');
             $table->softDeletes();
             $table->timestamps();

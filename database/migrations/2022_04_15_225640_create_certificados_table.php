@@ -18,7 +18,7 @@ class CreateCertificadosTable extends Migration
             $table->dateTime('data_emissao');
             $table->foreignId('inscricao_id')->nullable();
             $table->foreignId('user_id');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

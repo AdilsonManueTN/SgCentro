@@ -19,7 +19,7 @@ class CreateCursosTable extends Migration
             $table->date('ano');
             $table->foreignId('centro_id');
             $table->string('sigla',15);
-            $table->foreign('centro_id')->references('centros')->onDelete('cascade');
+            $table->foreign('centro_id')->references('id')->on('centros')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

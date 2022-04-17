@@ -15,11 +15,10 @@ class CreateFuncionariosTable extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
             $table->foreignId('user_id');
             $table->foreignId('categoria_id');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
-            $table->foreign('categoria_id')->references('categorias')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
