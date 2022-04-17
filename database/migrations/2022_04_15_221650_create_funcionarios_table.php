@@ -17,7 +17,9 @@ class CreateFuncionariosTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->foreignId('user_id');
+            $table->foreignId('categoria_id');
             $table->foreign('user_id')->references('users')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }
