@@ -20,8 +20,8 @@ class CreatePropinasTable extends Migration
             $table->text('arquivo1');
             $table->foreignId('user_id');
             $table->enum('tipo',['Único','Mensal','Parcelado','Trimestral','Semestral','Anual','Por Aula'])->nullable();
-            $table->foreign('turma_id')->references('turmas')->onDelete('cascade');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
+            $table->foreign('turma_id')->references('id')->on('turmas')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

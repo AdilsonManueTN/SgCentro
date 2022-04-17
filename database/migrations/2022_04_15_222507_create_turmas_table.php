@@ -27,9 +27,9 @@ class CreateTurmasTable extends Migration
             $table->foreignId('curso_id');
             $table->foreignId('sala_id');
             $table->foreignId('user_id');
-            $table->foreign('sala_id')->references('salas')->onDelete('cascade');
-            $table->foreign('curso_id')->references('cursos')->onDelete('cascade');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
+            $table->foreign('sala_id')->references('id')->on('salas')->constrained()->onDelete('cascade');
+            $table->foreign('curso_id')->references('id')->on('cursos')->constrained()->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

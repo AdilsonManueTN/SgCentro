@@ -25,8 +25,7 @@ class CreateCentrosTable extends Migration
             $table->string('slogam');
             $table->string('estrutura');
             $table->string('especialidade');
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
+            $table->bigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
         });

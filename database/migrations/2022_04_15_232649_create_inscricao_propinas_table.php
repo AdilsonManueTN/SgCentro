@@ -15,11 +15,11 @@ class CreateInscricaoPropinasTable extends Migration
     {
         Schema::create('inscricao_propinas', function (Blueprint $table) {
             $table->id();
-            $table->text('user_id');
+            $table->foreignId('user_id');
             $table->decimal('valor_pago', $precision = 8, $scale = 2);
             $table->foreignId('inscricao_id');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
-            $table->foreign('inscricao_id')->references('inscricoes')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');
+            $table->foreign('inscricao_id')->references('id')->on('inscricoes')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

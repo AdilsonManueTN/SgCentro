@@ -16,9 +16,9 @@ class CreateSalasTable extends Migration
         Schema::create('salas', function (Blueprint $table) {
             $table->id();
             $table->string('sala')->nullable();
-            $table->int('numero_sala')->nullable();
+            $table->integer('numero_sala')->nullable();
             $table->foreignId('user_id');
-            $table->foreign('user_id')->references('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

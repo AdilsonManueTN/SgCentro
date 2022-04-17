@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFuncionariosTable extends Migration
+class CreateSalariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateFuncionariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('funcionarios', function (Blueprint $table) {
+        Schema::create('salarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
             $table->foreignId('categoria_id');
-            $table->foreign('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');
+            $table->decimal('salario_bruto',$precision = 8, $scale = 2);
+            $table->decimal('salario_liquido',$precision = 8, $scale = 2);
+            $table->decimal('salario_base',$precision = 8, $scale = 2);
+            $table->integer('percentagem');
+            $table->decimal('total');
             $table->foreign('categoria_id')->references('id')->on('categorias')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateFuncionariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionarios');
+        Schema::dropIfExists('salarios');
     }
 }
