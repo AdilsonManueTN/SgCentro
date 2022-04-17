@@ -19,12 +19,14 @@ use App\Http\Controllers\{
 */
 
 
+//   A U T  E  N T  I  C  A  Ç  A  O
     Route::get('/entrar', function () {
       return view('auth.entrar');
     })->name('entrar');
+    Route::post('/entrar/do', [EntrarController::class,'index'])->name('do.login');
 
 
-
+    //
 
     Route::name('admin.')->group(function () {
         Route::get('/pagina-principal', [EntrarController::class,'index'])->name('index');

@@ -26,15 +26,15 @@ class EntrarController extends Controller
         if(!(filter_var(($request->email), FILTER_VALIDATE_EMAIL)) ){
              $entrarSistema['success']=false;
              $entrarSistema['message']='Email  inválido';
-             echo json_encode($entrarSistema);
-             return;
+             return json_encode($entrarSistema);
+             
         }
 
         if( strlen($request->password)<3 ){
             $entrarSistema['success']=false;
             $entrarSistema['message']='A Senha deve ter no mínimio 8 caracteres';
-            echo json_encode($entrarSistema);
-            return;
+            return json_encode($entrarSistema);
+            
         }
         //dd($request->email);
         $dados=$this->userExiste($request->email);
@@ -43,8 +43,8 @@ class EntrarController extends Controller
 
             $entrarSistema['success'] = false;
             $entrarSistema['message'] = 'credencias desconhecidas';
-            echo json_encode($entrarSistema);
-            return;
+            return json_encode($entrarSistema);
+            
         }
 
 
@@ -57,7 +57,7 @@ class EntrarController extends Controller
         {
             $entrarSistema['success'] = true;
             return json_encode($entrarSistema);
-            //return;
+            //
         }
 
 
@@ -70,7 +70,7 @@ class EntrarController extends Controller
 
     public function index()
     {
-        return view('layout.master');
+        return view('admin.index.index');
     }
 
 
